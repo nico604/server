@@ -6,12 +6,18 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "better-sqlite3": "^7.5.3",
+    "connect-sqlite3": "^0.9.13",
     "cookie-parser": "~1.4.4",
+    "csurf": "^1.11.0",
     "debug": "~2.6.9",
     "dotenv": "^16.0.1",
     "express": "~4.16.1",
+    "express-session": "^1.17.3",
+    "mkdirp": "^1.0.4",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
-    "passport-discogs": "^0.2.0"
+    "passport-discogs": "^0.2.0",
+    "sqlite3": "^5.0.8"
   }
 }
