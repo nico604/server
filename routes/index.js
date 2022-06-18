@@ -2,8 +2,9 @@ var express = require('express');
 
 var db = require('../db');
 
+  
 function fetchDisc(req, res, next) {
-  db.all('SELECT id, * FROM disc WHERE owner_id = ?', [
+  db.all('SELECT * FROM discs', [
     req.user.id
   ], function(err, rows) {
     if (err) { return next(err); }
@@ -11,14 +12,16 @@ function fetchDisc(req, res, next) {
     var discs = rows.map(function(row) {
       return {
         id: row.id,
-        title: row.title,
+        discname: row.discname,
+        discmedia:row.discmedia,
         completed: row.completed == 1 ? true : false,
-        url: '/' + row.id
+        date: row.created_at
+
       }
     });
-    res.locals.todos = todos;
-    res.locals.activeCount = todos.filter(function(todo) { return !todo.completed; }).length;
-    res.locals.completedCount = todos.length - res.locals.activeCount;
+    res.locals.discs = discs;
+    res.locals.activeCount = discs.filter(function(todo) { return !todo.completed; }).length;
+    res.locals.completedCount = discs.length - res.locals.activeCount;
     next();
   });
 }
