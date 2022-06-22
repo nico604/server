@@ -17,9 +17,10 @@ passport.use(new DiscogsStrategy({
 },  function verify(req, token, refreshToken, profile, done) {
    //const updateUser = function () {
     const user = req.user;
-    logger.debug({ user: user }, 'user exists, updating discogs details');
-    user.discogs.id = profile.id;
-    user.discogs.token = token;
+    //logger.debug({ user: user }, 'user exists, updating discogs details');
+    console.log(profile);
+    //user.discogs.id = profile.id;
+    //user.discogs.token = token;
     return done(null, profile);
        //}
 }));
